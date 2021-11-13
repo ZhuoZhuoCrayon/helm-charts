@@ -1,0 +1,27 @@
+apiVersion: v1
+entries:
+  djangocli:
+  - apiVersion: v2
+    appVersion: 0.5.12
+    created: "2021-11-13T12:05:47.767054+08:00"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      version: 1.7.1
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 9.4.0
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 14.8.7
+    description: A Helm chart for Kubernetes
+    digest: c76a148a903ebac796e1c8c78c427d3dcedf1fe21f6ee707953b8616eea2e28a
+    name: djangocli
+    type: application
+    urls:
+    - https://github.com/ZhuoZhuoCrayon/helm-charts/releases/download/djangocli-0.1.0/djangocli-0.1.0.tgz
+    version: 0.1.0
+generated: "2021-11-13T12:05:47.767062+08:00"
+
