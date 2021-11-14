@@ -1,0 +1,6 @@
+## Project Part
+.idea/
+.tmp/
+.vscode/
+db.sqlite3
+*.DS_Store
