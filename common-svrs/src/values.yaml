@@ -1,0 +1,222 @@
+# Default values for common-svrs.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+
+service:
+  type: ClusterIP
+  port: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+
+global:
+  storageClass: ""
+
+
+## Redis chart configuration
+# https://github.com/bitnami/charts/blob/master/bitnami/redis/README.md
+redis:
+  enabled: true
+  architecture: standalone
+  auth:
+    enabled: true
+    password: ""
+
+  master:
+    service:
+      type: "NodePort"
+      # 用于集群内其他 pod 访问
+      port: 6379
+      # nodePort 外部流量访问 service
+      # To 16 -> master.service.nodePort renamed as master.service.nodePorts.redis
+      # https://github.com/bitnami/charts/blob/master/bitnami/redis/README.md#to-1600
+      nodePorts:
+        redis: 30379
+
+    persistence:
+      enabled: true
+      storageClass: ""
+      size: 2Gi
+
+
+## MariaDB chart configuration
+# https://github.com/bitnami/charts/blob/master/bitnami/mariadb/README.md
+mariadb:
+  enabled: true
+  architecture: standalone
+  auth:
+    # 需要初始化 root 密码，才能使用 root 权限
+    rootPassword: ""
+    database: "common-svrs"
+    username: ""
+    password: ""
+
+  # 参考 https://github.com/bitnami/charts/blob/master/bitnami/mariadb/templates/primary/statefulset.yaml
+  # 将初始化脚本挂载到 /docker-entrypoint-initdb.d
+  # 翻阅 docker 镜像查看该目录工作原理，可以通过 root 执行 sql
+  # https://github.com/bitnami/bitnami-docker-mariadb/blob/master/10.5/debian-10/rootfs/opt/bitnami/scripts/libmariadb.sh
+  initdbScripts:
+    grant_user_pms.sql: |
+      grant all privileges on *.* to 'crayon'@'%';
+      flush privileges;
+
+  primary:
+    service:
+      type: "NodePort"
+      # 用于集群内其他 pod 访问
+      port: 3306
+      # nodePort 外部流量访问 service
+      nodePort: 30036
+
+    configuration: |-
+      [mysqld]
+      skip-name-resolve
+      explicit_defaults_for_timestamp
+      basedir=/opt/bitnami/mariadb
+      plugin_dir=/opt/bitnami/mariadb/plugin
+      port=3306
+      socket=/opt/bitnami/mariadb/tmp/mysql.sock
+      tmpdir=/opt/bitnami/mariadb/tmp
+      max_allowed_packet=16M
+      bind-address=0.0.0.0
+      pid-file=/opt/bitnami/mariadb/tmp/mysqld.pid
+      log-error=/opt/bitnami/mariadb/logs/mysqld.log
+      # change charset
+      collation-server = utf8mb4_unicode_ci
+      init-connect='SET NAMES utf8mb4'
+      character-set-server=utf8mb4
+      [client]
+      port=3306
+      socket=/opt/bitnami/mariadb/tmp/mysql.sock
+      # change charset
+      default-character-set=utf8mb4
+      plugin_dir=/opt/bitnami/mariadb/plugin
+      [manager]
+      port=3306
+      socket=/opt/bitnami/mariadb/tmp/mysql.sock
+      pid-file=/opt/bitnami/mariadb/tmp/mysqld.pid
+
+    persistence:
+      enabled: true
+      storageClass: ""
+      size: 8Gi
+
+
+## MySQL configuration
+# https://github.com/bitnami/charts/blob/master/bitnami/mysql/README.md
+mysql:
+  enabled: true
+  architecture: standalone
+  auth:
+    rootPassword: ""
+    database: "common-svrs"
+    username: ""
+    password: ""
+
+  initdbScripts:
+    grant_user_pms.sql: |
+      grant all privileges on *.* to 'crayon'@'%';
+      flush privileges;
+
+  primary:
+    ## Enable persistence using Persistent Volume Claims
+    ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
+    ##
+    service:
+      type: "NodePort"
+      # 用于集群内其他 pod 访问
+      port: 3306
+      # nodePort 外部流量访问 service
+      nodePort: 30306
+
+    configuration: |-
+      [mysqld]
+      default_authentication_plugin=mysql_native_password
+      skip-name-resolve
+      explicit_defaults_for_timestamp
+      basedir=/opt/bitnami/mysql
+      plugin_dir=/opt/bitnami/mysql/lib/plugin
+      port=3306
+      socket=/opt/bitnami/mysql/tmp/mysql.sock
+      datadir=/bitnami/mysql/data
+      tmpdir=/opt/bitnami/mysql/tmp
+      max_allowed_packet=64M
+      bind-address=0.0.0.0
+      pid-file=/opt/bitnami/mysql/tmp/mysqld.pid
+      log-error=/opt/bitnami/mysql/logs/mysqld.log
+
+      # change charset
+      collation-server=utf8mb4_unicode_ci
+      init-connect='SET NAMES utf8mb4'
+      character-set-server=utf8mb4
+
+      [client]
+      port=3306
+      socket=/opt/bitnami/mysql/tmp/mysql.sock
+      # change charset
+      default-character-set=utf8mb4
+      plugin_dir=/opt/bitnami/mysql/lib/plugin
+      [manager]
+      port=3306
+      socket=/opt/bitnami/mysql/tmp/mysql.sock
+      pid-file=/opt/bitnami/mysql/tmp/mysqld.pid
+
+    persistence:
+      enabled: true
+      storageClass: ""
+      size: 8Gi
+
+
+## RabbitMQ chart configuration
+## https://github.com/bitnami/charts/blob/master/bitnami/rabbitmq/values.yaml
+##
+rabbitmq:
+  enabled: true
+  auth:
+    username: ""
+    password: ""
+
+  service:
+    type: "NodePort"
+
+    nodePorts:
+      amqp: ""
+      dist: ""
+      manager: ""
+      epmd: ""
+
+  persistence:
+    enabled: true
+    storageClass: ""
+    size: 2Gi
+
+
+  extraConfiguration: |-
+    default_vhost = crayon
+    default_permissions.configure = .*
+    default_permissions.read = .*
+    default_permissions.write = .*

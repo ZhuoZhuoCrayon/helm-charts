@@ -3,7 +3,7 @@ entries:
   common-svrs:
   - apiVersion: v2
     appVersion: 1.1.0
-    created: "2023-03-30T15:30:05.443302+08:00"
+    created: "2023-03-30T15:30:05.411117+08:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -31,27 +31,4 @@ entries:
     urls:
     - https://github.com/ZhuoZhuoCrayon/helm-charts/blob/main/common-svrs/src/_charts/common-svrs-0.1.0.tgz
     version: 0.1.0
-  djangocli:
-  - apiVersion: v2
-    appVersion: 0.5.8
-    created: "2021-11-14T15:30:42.249564693Z"
-    dependencies:
-    - name: common
-      repository: https://charts.bitnami.com/bitnami
-      version: 1.7.1
-    - condition: mariadb.enabled
-      name: mariadb
-      repository: https://charts.bitnami.com/bitnami
-      version: 9.4.0
-    - condition: redis.enabled
-      name: redis
-      repository: https://charts.bitnami.com/bitnami
-      version: 14.8.7
-    description: "\U0001F527 Standard tooling for Django development based on DRF"
-    digest: b4f151065146c1d210209625f09dcbf84fca838ea95ec46b69b7e294110378c8
-    name: djangocli
-    type: application
-    urls:
-    - https://github.com/ZhuoZhuoCrayon/djangocli/releases/download/v0.5.8/djangocli-helm-0.5.8.tgz
-    version: 0.5.8
-generated: "2023-03-30T15:30:05.431367+08:00"
+generated: "2023-03-30T15:30:05.398404+08:00"
