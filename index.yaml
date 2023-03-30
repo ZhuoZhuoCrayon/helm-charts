@@ -3,7 +3,7 @@ entries:
   common-svrs:
   - apiVersion: v2
     appVersion: 1.1.0
-    created: "2023-03-30T15:30:05.443302+08:00"
+    created: "2023-03-30T15:49:42.914844+08:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -25,11 +25,11 @@ entries:
       repository: https://charts.bitnami.com/bitnami
       version: 11.x.x
     description: "\U0001F4E6 Develop public DB component services"
-    digest: a1d85e6f56370a65d7e11a802cda4f5b097a5096abeef9f82f966e2b1b5dfc10
+    digest: 80aa810f142565b22ec6afbe4a07daff89fcb8856da2903ab7b1d27c67a2bf39
     name: common-svrs
     type: application
     urls:
-    - https://github.com/ZhuoZhuoCrayon/helm-charts/blob/main/common-svrs/src/_charts/common-svrs-0.1.0.tgz
+    - https://github.com/ZhuoZhuoCrayon/helm-charts/raw/main/common-svrs/src/_charts/common-svrs-0.1.0.tgz
     version: 0.1.0
   djangocli:
   - apiVersion: v2
@@ -54,4 +54,4 @@ entries:
     urls:
     - https://github.com/ZhuoZhuoCrayon/djangocli/releases/download/v0.5.8/djangocli-helm-0.5.8.tgz
     version: 0.5.8
-generated: "2023-03-30T15:30:05.431367+08:00"
+generated: "2023-03-30T15:49:42.901663+08:00"

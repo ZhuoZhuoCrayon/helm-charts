@@ -53,7 +53,7 @@ done
 
 
 WORKSPACE=$(pwd)
-CHARTS_REPO_URL="https://github.com/ZhuoZhuoCrayon/helm-charts/blob/main"
+CHARTS_REPO_URL="https://github.com/ZhuoZhuoCrayon/helm-charts/raw/main"
 
 chart_dir="${WORKSPACE}/${NAME}/src"
 
