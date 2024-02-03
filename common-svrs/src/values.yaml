@@ -149,9 +149,11 @@ mysql:
     service:
       type: "NodePort"
       # 用于集群内其他 pod 访问
-      port: 3306
+      ports:
+        mysql: 3306
       # nodePort 外部流量访问 service
-      nodePort: 30306
+      nodePorts:
+        mysql: ""
 
     configuration: |-
       [mysqld]
@@ -202,6 +204,9 @@ rabbitmq:
 
   service:
     type: "NodePort"
+
+    ports:
+      amqp: 5672
 
     nodePorts:
       amqp: ""
