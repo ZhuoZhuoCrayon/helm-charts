@@ -4,15 +4,15 @@ dependencies:
   version: 1.17.1
 - name: mariadb
   repository: https://charts.bitnami.com/bitnami
-  version: 11.5.5
+  version: 11.5.7
 - name: mysql
   repository: https://charts.bitnami.com/bitnami
-  version: 9.7.0
+  version: 9.10.8
 - name: redis
   repository: https://charts.bitnami.com/bitnami
   version: 16.13.2
 - name: rabbitmq
   repository: https://charts.bitnami.com/bitnami
-  version: 11.12.0
-digest: sha256:3b727c906061fd236b6244da2554f2dc969b8fb62339a3ca79eb5f4c10683d84
-generated: "2023-03-29T23:20:23.022281+08:00"
+  version: 11.16.2
+digest: sha256:35b9fb5eda441890b19b6261b1101946faa895520bd20fd15ebe0e748d15aa45
+generated: "2023-07-26T00:45:07.393447+08:00"
