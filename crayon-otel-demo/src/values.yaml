@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 imagePullSecrets: []
-nameOverride: "1"
+nameOverride: ""
 fullnameOverride: ""
 
 serviceAccount:
