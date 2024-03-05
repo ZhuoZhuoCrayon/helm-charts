@@ -69,8 +69,8 @@ cp "$chart_dir"/index.yaml "$chart_dir"/_index.yaml
 
 helm repo index "$chart_dir" --url "${CHARTS_REPO_URL}/${NAME}/src" --merge "${WORKSPACE}"/index.yaml
 
-cp -f "$chart_dir"/index.yaml "${WORKSPACE}"/index.yaml
-mv "$chart_dir"/_index.yaml "$chart_dir"/index.yaml
+mv -f "$chart_dir"/index.yaml "${WORKSPACE}"/index.yaml
+mv -f "$chart_dir"/_index.yaml "${WORKSPACE}"/"${NAME}"/index.yaml
 
 cd "${chart_dir}" || exist
 helm dependency update

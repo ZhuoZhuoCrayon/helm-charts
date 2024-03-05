@@ -61,6 +61,21 @@ entries:
     urls:
     - https://github.com/ZhuoZhuoCrayon/helm-charts/raw/main/common-svrs/src/_charts/common-svrs-0.1.0.tgz
     version: 0.1.0
+  crayon-otel-demo:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2024-03-05T22:05:17.060331+08:00"
+    dependencies:
+    - name: opentelemetry-demo
+      repository: https://open-telemetry.github.io/opentelemetry-helm-charts
+      version: 0.29.x
+    description: A Helm chart for Kubernetes
+    digest: 436edd7c75968619ca73ae2cd8d574a64ab13ba09a958d90e209c310beb0f1cc
+    name: crayon-otel-demo
+    type: application
+    urls:
+    - https://github.com/ZhuoZhuoCrayon/helm-charts/raw/main/crayon-otel-demo/src/_charts/crayon-otel-demo-1.0.0.tgz
+    version: 1.0.0
   djangocli:
   - apiVersion: v2
     appVersion: 0.5.8
@@ -84,4 +99,4 @@ entries:
     urls:
     - https://github.com/ZhuoZhuoCrayon/djangocli/releases/download/v0.5.8/djangocli-helm-0.5.8.tgz
     version: 0.5.8
-generated: "2023-07-26T00:57:19.032811+08:00"
+generated: "2024-03-05T22:05:17.032495+08:00"
