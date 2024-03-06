@@ -40,3 +40,6 @@ opentelemetry-demo:
       service:
         port: 8080
         type: NodePort
+
+    loadgenerator:
+      enabled: false
