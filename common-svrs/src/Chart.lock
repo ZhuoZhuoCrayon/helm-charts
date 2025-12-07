@@ -1,18 +1,24 @@
 dependencies:
 - name: common
   repository: https://charts.bitnami.com/bitnami
-  version: 1.17.1
+  version: 2.31.4
 - name: mariadb
   repository: https://charts.bitnami.com/bitnami
   version: 11.5.7
 - name: mysql
   repository: https://charts.bitnami.com/bitnami
-  version: 9.10.8
+  version: 9.23.0
 - name: redis
   repository: https://charts.bitnami.com/bitnami
   version: 16.13.2
+- name: redis
+  repository: https://charts.bitnami.com/bitnami
+  version: 16.13.2
+- name: redis-cluster
+  repository: https://charts.bitnami.com/bitnami
+  version: 8.8.2
 - name: rabbitmq
   repository: https://charts.bitnami.com/bitnami
   version: 11.16.2
-digest: sha256:35b9fb5eda441890b19b6261b1101946faa895520bd20fd15ebe0e748d15aa45
-generated: "2023-07-26T00:45:07.393447+08:00"
+digest: sha256:f107c7b95e41cae46843deb1c53e14e3288334e26ad6841df0d6e233f0c29e0b
+generated: "2025-12-07T11:24:11.873993+08:00"
