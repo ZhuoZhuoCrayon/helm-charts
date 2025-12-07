@@ -63,6 +63,79 @@ redis:
       size: 2Gi
 
 
+## Redis Sentinel configuration (using redis chart alias)
+redis-sentinel:
+  enabled: false
+  architecture: replication
+  sentinel:
+    enabled: true
+    masterSet: mymaster
+    quorum: 2
+    service:
+      type: NodePort
+      ports:
+        redis: 6379
+      nodePorts:
+        redis: 30389
+        sentinel: 30390
+
+  auth:
+    enabled: true
+    password: ""
+    sentinelPassword: ""
+
+  master:
+    persistence:
+      enabled: true
+      storageClass: ""
+      size: 2Gi
+
+  replica:
+    replicaCount: 3
+    persistence:
+      enabled: true
+      storageClass: ""
+      size: 2Gi
+
+
+## Redis Cluster configuration
+## https://github.com/bitnami/charts/blob/master/bitnami/redis-cluster/values.yaml
+redis-cluster:
+  enabled: false
+  cluster:
+    nodes: 6
+    replicas: 1
+    # 开启外部访问，为每个节点创建独立 Service，解决客户端重定向问题
+    externalAccess:
+      enabled: true
+      service:
+        type: NodePort
+        # 端口数量必须与 nodes 数量一致
+        nodePorts:
+          - 30400
+          - 30401
+          - 30402
+          - 30403
+          - 30404
+          - 30405
+  
+  auth:
+    clientPassword: ""
+    password: ""
+
+  service:
+    type: NodePort
+    ports:
+      redis: 6379
+    nodePorts:
+      redis: 30399
+  
+  persistence:
+    enabled: true
+    storageClass: ""
+    size: 2Gi
+
+
 ## MariaDB chart configuration
 # https://github.com/bitnami/charts/blob/master/bitnami/mariadb/README.md
 mariadb:

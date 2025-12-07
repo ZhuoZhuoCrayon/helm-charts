@@ -15,17 +15,17 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 2.0.0
+version: 2.1.0
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
-appVersion: "2.0.0"
+appVersion: "2.1.0"
 
 dependencies:
 - name: common
-  version: 1.x.x
+  version: 2.x.x
   repository: https://charts.bitnami.com/bitnami
 - name: mariadb
   version: 11.x.x
@@ -39,6 +39,15 @@ dependencies:
   version: 16.x.x
   repository: https://charts.bitnami.com/bitnami
   condition: redis.enabled
+- name: redis
+  version: 16.x.x
+  repository: https://charts.bitnami.com/bitnami
+  alias: redis-sentinel
+  condition: redis-sentinel.enabled
+- name: redis-cluster
+  version: 8.x.x
+  repository: https://charts.bitnami.com/bitnami
+  condition: redis-cluster.enabled
 - name: rabbitmq
   version: 11.x.x
   repository: https://charts.bitnami.com/bitnami

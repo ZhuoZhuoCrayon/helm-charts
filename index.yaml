@@ -2,8 +2,47 @@ apiVersion: v1
 entries:
   common-svrs:
   - apiVersion: v2
+    appVersion: 2.1.0
+    created: "2025-12-07T11:38:26.319079+08:00"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      version: 2.x.x
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.x.x
+    - condition: mysql.enabled
+      name: mysql
+      repository: https://charts.bitnami.com/bitnami
+      version: 9.x.x
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 16.x.x
+    - alias: redis-sentinel
+      condition: redis-sentinel.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 16.x.x
+    - condition: redis-cluster.enabled
+      name: redis-cluster
+      repository: https://charts.bitnami.com/bitnami
+      version: 8.x.x
+    - condition: rabbitmq.enabled
+      name: rabbitmq
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.x.x
+    description: "\U0001F4E6 Develop public DB component services"
+    digest: 20d5a9c646a7459ac7ced17992017475769d256003b770d84d334c69587d9c52
+    name: common-svrs
+    type: application
+    urls:
+    - https://github.com/ZhuoZhuoCrayon/helm-charts/raw/main/common-svrs/src/_charts/common-svrs-2.1.0.tgz
+    version: 2.1.0
+  - apiVersion: v2
     appVersion: 2.0.0
-    created: "2023-07-26T00:57:19.058018+08:00"
+    created: "2025-12-07T11:38:26.309284+08:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -33,7 +72,7 @@ entries:
     version: 2.0.0
   - apiVersion: v2
     appVersion: 1.1.0
-    created: "2023-07-26T00:57:19.045793+08:00"
+    created: "2025-12-07T11:38:26.301495+08:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -141,4 +180,4 @@ entries:
     urls:
     - https://github.com/ZhuoZhuoCrayon/djangocli/releases/download/v0.5.8/djangocli-helm-0.5.8.tgz
     version: 0.5.8
-generated: "2024-03-06T13:22:04.106896+08:00"
+generated: "2025-12-07T11:38:26.293325+08:00"
