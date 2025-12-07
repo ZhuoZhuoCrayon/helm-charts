@@ -118,7 +118,6 @@ redis-cluster:
     storageClass: ""
     size: 2Gi
 
-
 ## MariaDB chart configuration
 # https://github.com/bitnami/charts/blob/master/bitnami/mariadb/README.md
 mariadb:
