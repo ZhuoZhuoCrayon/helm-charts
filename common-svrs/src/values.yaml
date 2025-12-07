@@ -82,7 +82,6 @@ redis-sentinel:
   auth:
     enabled: true
     password: ""
-    sentinelPassword: ""
 
   master:
     persistence:
@@ -102,26 +101,10 @@ redis-sentinel:
 ## https://github.com/bitnami/charts/blob/master/bitnami/redis-cluster/values.yaml
 redis-cluster:
   enabled: false
+  password: ""
   cluster:
     nodes: 6
     replicas: 1
-    # 开启外部访问，为每个节点创建独立 Service，解决客户端重定向问题
-    externalAccess:
-      enabled: true
-      service:
-        type: NodePort
-        # 端口数量必须与 nodes 数量一致
-        nodePorts:
-          - 30400
-          - 30401
-          - 30402
-          - 30403
-          - 30404
-          - 30405
-  
-  auth:
-    clientPassword: ""
-    password: ""
 
   service:
     type: NodePort
