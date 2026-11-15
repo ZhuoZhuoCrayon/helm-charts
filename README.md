@@ -17,7 +17,7 @@ inside the namespace using the `default` ACL user. The standalone instance uses
 a ClusterIP Service and a 2 GiB claim on the default StorageClass. Override
 `valkey.auth.usersExistingSecret` or `valkey.persistence.storageClass` if needed.
 
-
+## Publishing a chart
 
 ```shell
 chart_name="common-svrs"
