@@ -20,5 +20,8 @@ dependencies:
 - name: rabbitmq
   repository: https://charts.bitnami.com/bitnami
   version: 11.16.2
-digest: sha256:f107c7b95e41cae46843deb1c53e14e3288334e26ad6841df0d6e233f0c29e0b
-generated: "2025-12-07T11:24:11.873993+08:00"
+- name: valkey
+  repository: https://valkey.io/valkey-helm/
+  version: 1.0.0
+digest: sha256:584945526504aa1029c4be64a6959a6d05288b1f6848049d8f6d969690a37460
+generated: "2026-11-15T13:47:31.732414+08:00"
