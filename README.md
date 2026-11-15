@@ -1,6 +1,22 @@
 # helm-charts
 helm charts repo
 
+## Valkey in common-svrs
+
+Valkey is optional and runs alongside Redis. To enable it, first create a Secret
+named `<release>-valkey-auth` in the release namespace with the password under
+the `password` key, then add this to your release values:
+
+```yaml
+valkey:
+  enabled: true
+```
+
+For the `common-svrs` release, clients connect to `common-svrs-valkey:6379`
+inside the namespace using the `default` ACL user. The standalone instance uses
+a ClusterIP Service and a 2 GiB claim on the default StorageClass. Override
+`valkey.auth.usersExistingSecret` or `valkey.persistence.storageClass` if needed.
+
 
 
 ```shell
